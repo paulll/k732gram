@@ -25,6 +25,11 @@ docker-compose up
 xdg-open 'http://localhost/'
 ```
 
+### Регистрация админа
+```
+docker-compose run django python manage.py createsuperuser
+```
+
 ### Сборка статики
 
 Установка утилит для сборки:
