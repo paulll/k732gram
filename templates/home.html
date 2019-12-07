@@ -10,6 +10,9 @@
   <div id="logout"><a href="{% url 'logout' %}">Выйти</a></div>
 {% else %}
   <div id="unauthorized">Вы не авторизированы</div>
-  <div id="login"><a href="{% url 'login' %}">Войти</a></div>
+  <div id="login">
+  	<a href="{% url 'login' %}">Войти</a>
+  	<a href="{% url 'signup' %}">Зарегистрироваться</a>
+  </div>
 {% endif %}
 {% endblock %}
