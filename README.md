@@ -34,7 +34,7 @@ xdg-open 'http://localhost/'
 `parcel build -d static views/im.pug`
 
 Сборка с автоматической пересборкой при обновлении файлов:
-`parcel build -d static views/im.pug`
+`parcel watch -d static views/im.pug`
 
 ### Todo
  - [ ] объединить вью для добавления чата и редактирования списка участников
