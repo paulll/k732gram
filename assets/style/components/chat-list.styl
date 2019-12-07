@@ -1,0 +1,62 @@
+#controls
+	size(auto, 100vh)
+	flex-container(column, stretch, stretch)
+	#chat-list
+		flex-grow 1
+		overflow auto
+		overflow overlay
+		size(300px, auto)
+		background-color lighten(bg_menu, 15%)
+		color font_menu
+		.entry
+			size(auto, auto, 10px, 20px, 5px, 5px)
+			background-color bg_menu
+			cursor pointer
+			border-radius 3px
+			box-shadow 0 0 5px 0px rgba(0,0,0,0.4)
+			&#create-chat
+				border-bottom solid 5px darken(bg_menu, 30%)
+				text-align center
+				display flex
+				align-items center
+				justify-content center
+				&:hover 
+					box-shadow 0 0 5px 0px rgba(0,0,0,0.6)
+					background-color darken(bg_menu, 30%)
+					border-bottom solid 5px darken(bg_menu, 50%)
+				&:active
+					border-bottom 0px
+					margin-top 10px
+			&.selected
+				background-color darken(bg_menu, 30%)
+				border-left 5px solid black
+				padding-left 15px
+			&:hover:not(#create-chat)
+				padding-left 15px
+				border-left 5px solid darken(accent, 10%)
+				background-color lighten(bg_menu, 20%)
+			.head
+				.icon
+					color accent
+				.name
+					font-weight bold
+			.preview
+				white-space nowrap
+				text-overflow ellipsis
+				overflow hidden
+				.preview-author
+					opacity 0.4
+					&:after
+						content ": "
+				.preview-text
+					display inline
+					opacity 0.8
+	#controls-other
+		size(auto, auto, 5px, 10px)
+		background-color  black
+		color darken(font_menu, 30%)
+		#status
+			opacity 0.5
+			font-family monospace
+			font-size 90%
+			text-align center

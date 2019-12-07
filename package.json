@@ -1,0 +1,24 @@
+{
+  "name": "k732gram",
+  "version": "1.0.0",
+  "description": "realtime chat with django+centrifugo",
+  "main": "index.js",
+  "dependencies": {
+    "centrifuge": "^2.2.3",
+    "fast-array-diff": "^0.2.0",
+    "moment": "^2.24.0",
+    "pug": "^2.0.4",
+    "stylus": "^0.54.7"
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "paulll",
+  "license": "MIT"
+}

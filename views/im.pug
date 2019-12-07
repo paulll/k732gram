@@ -1,0 +1,91 @@
+doctype html
+html
+	head
+		title Вебчат
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel="stylesheet" href="../assets/style/im.styl")
+		script(src="../assets/js/rt-chat.js" defer="defer")
+	body
+		#readby-list
+			.line @admin
+			.line @not-admin
+		#main.h-split
+			#controls.v-split
+				#chat-list
+					.entry#create-chat
+						.head
+							span.name Создать Чат
+				#controls-other
+					#status v0.0.1 / 
+						span#app-online-status offline 
+			#chat-name-input-wrap
+				input#chat-name-input(placeholder="Название чата...")
+			#chat-members-wrap
+				#chat-member-list
+				#chat-member-input-wrap
+					input#chat-member-input(placeholder="Никнейм участника..")
+			#chat.v-split
+				#chat-header
+					#chat-title #pentest
+					#chat-status 22 участника
+					#currentuser anonymous
+				#chat-body
+					#history
+						#history-start
+							.title Поздравляем!
+							.body Вы пролистали до начала чата
+						.message.incoming
+							.body.text
+								.capt first message
+								.meta
+									.date 18:51	
+						.message.incoming.last
+							.body.photo
+								img.data(src="../assets/img/twillight.png")
+								.capt test png image
+								.meta
+									.date 18:51
+						.message.outgoing
+							.body.sticker 
+								img.data(src="../assets/img/twillight.png")
+								.meta
+									.date 18:51
+						.message.outgoing.last
+							.body.text 
+								.capt test png as a sticker
+								.meta
+									.date 18:51
+									.readstate
+						.message.info
+							| @paulll присоединился к чату
+						.message.incoming.last
+							.body.text 
+								.capt single random message
+								.meta
+									.date 18:51
+						.message.outgoing
+							.body.text
+								.capt group of 
+								.meta
+									.date 18:51
+									.readstate
+						.message.outgoing
+							.body.text
+								.capt random
+								.meta
+									.date 18:51
+									.readstate
+																			
+						.message.outgoing.last
+							.body.text
+								.capt messages
+								.meta
+									.date 18:51
+									.readstate
+								
+				#chat-footer.h-split
+					#chat-form.v-split
+						textarea#form(placeholder="Написать сообщение..")
+						#buttons
+					

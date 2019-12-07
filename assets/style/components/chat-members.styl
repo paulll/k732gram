@@ -1,0 +1,53 @@
+#chat-members-wrap
+	background-color darken(bg_menu, 30%)
+	flex 1 0 
+	flex-container(column, center, center)
+	display none
+	color white
+
+	&.active
+		display flex
+	&.active ~ #chat 
+		display none
+		
+	#chat-member-list
+		margin 10px
+		div
+			&:before
+				content "@"
+				color accent
+			width 500px
+			margin 10px
+			box-shadow 0 0 15px 0px rgba(0,0,0,0.4)
+			color white
+			font-family 'Dejavu Sans Mono', 'Ubuntu Mono', 'Consolas', monospace
+			padding 10px 20px
+			font-size 150%
+			cursor pointer 
+			
+			border-radius 5px
+			background-color bg_menu
+			opacity 0.5				
+			
+			&.member 
+				opacity 1
+				background-color bg_menu
+				padding-left 15px
+				border-left solid 5px accent
+				
+			&:hover
+				opacity 1
+				background-color lighten(bg_menu, 10%)
+	
+
+			
+	input#chat-member-input
+		box-shadow 0 0 15px 0px rgba(0,0,0,0.4)
+		color white
+		background-color bg_menu
+		border 2px solid darken(bg_menu, 10%)
+		border-radius 3px
+		padding 20px 40px
+		font-size 200%
+		outline 0
+		 

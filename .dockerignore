@@ -1,6 +1,7 @@
-env
-*~
-*.sqlite3
-__pycache__
 .cache
+.idea
+env
+__pycache__
+views
+assets
 node_modules

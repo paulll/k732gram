@@ -1,0 +1,56 @@
+@require "base.styl"
+@require "theme.styl"
+
+body
+	flex-container(row, center, center)
+
+	background-color bg_main
+	color white
+	font-size 200%	
+	font-family 'Dejavu Sans Mono', 'Dejavu Mono', 'Ubuntu Mono', 'Consolas', monospace
+	
+	main
+		div
+			padding 5px
+			border-radius 3px
+			overflow hidden
+	
+	input
+		box-shadow 0 0 15px 0px rgba(0,0,0,0.4)
+		border 0
+		//border 2px solid darken(bg_menu, 10%)
+		border-radius 3px
+		padding 20px 40px
+		//background-color bg_main
+		font-size 100%
+		outline none	
+		
+	button
+		box-shadow 0 0 15px 0px rgba(0,0,0,0.4)
+		border 0
+		border-radius 3px	
+		padding 10px 20px
+		font-size 100%
+		margin 5px
+		font-size 75%
+		cursor pointer
+		background-color white
+		opacity 0.5
+		&:hover
+			opacity 1
+			border-left 5px solid accent
+			padding-left 15px	
+
+	#username
+		font-size 200%
+		&:before
+			content "@"
+			color accent
+			
+	a
+		//text-decoration none
+		color white
+		opacity 0.5
+		
+		&:hover
+			opacity 1

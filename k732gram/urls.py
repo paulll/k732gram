@@ -17,9 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from django.views.generic.base import TemplateView
+from django.conf.urls.static import static
+from k732gram import settings
+from k732gram.auth import views as auth_views
+import os
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/signup', auth_views.signup, name='signup'),
     path('auth/', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='home.html'), name='home')
-]
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('api/', include('k732gram.chat.urls')),
+] + static('/', document_root=os.path.join(settings.BASE_DIR, "static"))

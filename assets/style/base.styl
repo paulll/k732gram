@@ -1,0 +1,29 @@
+// functions
+flex-container(direction, main-axis=inital, cross-axis=inital)
+	display flex
+	flex-direction direction
+	justify-content main-axis
+	align-items cross-axis
+flex-item(grow=0, shrink=1, basis=auto)
+	flex grow shrink basis
+font(size, color)
+	font-size size
+	color color
+size(width, height, padding_h=0, padding_w=0, margin_h=0, margin_w=0)
+	width width
+	height height
+	padding padding_h padding_w
+	margin margin_h margin_w	
+
+
+// reset
+html, body, #main
+	size(100%, 100%)
+	font-family sans-serif
+	overflow hidden
+
+// flex classes	
+.h-split
+	flex-container(row)	
+.v-split 
+	flex-container(column)

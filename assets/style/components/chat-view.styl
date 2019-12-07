@@ -1,0 +1,225 @@
+// chat scrolling
+// chrome version:
+#chat-body
+	overflow-y scroll
+	overflow overlay
+	text-align center
+	#history
+		text-align default
+
+// firefox alternative
+@supports (-moz-appearance:none)
+	#chat-body
+		display block !important // disable flex
+		overflow-anchor none
+		.message:last-of-type
+			overflow-anchor auto
+
+#chat
+	flex-item(1, 1)
+	size(auto, 100vh)
+	color white
+	overflow hidden
+	#chat-header
+		size(auto, auto, 12px, 20px)
+		background-color bg_menu
+		padding-bottom 13px
+		position relative
+		#chat-title
+			font-weight bold
+		#chat-status
+			// nope
+			cursor pointer	
+			&:hover 
+				text-decoration underline	
+		#currentuser
+			font-family 'Dejavu Sans Mono', 'Ubuntu Mono', 'Consolas', monospace
+			position relative
+			cursor pointer
+			top -27px
+			height 0
+			float right 
+			//left 0
+			//position absolute
+			&:hover 
+				text-decoration underline	
+			&:before
+				content "@"
+				color accent	
+						
+	#chat-body
+		flex-container(column-reverse, flex-start, center)
+		flex-item(1, 1)
+		size(100%, 100%, 0, 20px)
+		box-sizing border-box
+		background-color bg_main
+		background url('../img/chat-background.jpg') repeat repeat
+		#history
+			flex-container(column, flex-end, center)
+			flex-item(1, 0)
+			display inline-flex
+			size(100%, auto, 10px, 0)
+			box-sizing border-box
+			min-height 0
+			max-width 600px
+			#history-start
+				size(300px, 300px, 20px, 20px)
+				font(110%, black)
+				flex-container(column, center, center)
+				margin-bottom 60px
+				background-color white
+				opacity 0.5
+				align-self center
+				text-align center
+				border-radius 50%
+				box-sizing border-box
+				.title
+					font-weight bold 
+					padding 20px 0
+					font-size 110%
+				.body
+					font-style italic
+			.message
+				display block
+				max-width 600px
+				position relative
+				&.info
+					color #2c2c2c
+					font-family 'Dejavu Sans Mono', 'Ubuntu Mono', 'Consolas', monospace
+					font-size 90%
+					margin 10px
+					background rgba(255,255,255,0.3)
+					padding 4px 8px 
+					border-radius 5px
+					
+				&.last .body:before, &.last .body:after
+					size(16px, 16px)
+					content ""
+					display inline-block
+					position absolute
+					bottom 2px
+					background-position bottom right
+				&.last.incoming .body
+					border-bottom-left-radius 0
+					&:before
+						left -14px
+						background radial-gradient(circle at 0 0, rgba(255,255,255,0) 18px, #ffffff 13px);
+				&.last.outgoing .body 
+					border-bottom-right-radius 0
+					&:after
+						right -14px
+						background radial-gradient(circle at 100% 0, rgba(177,224,218,0) 18px, #B1E0DA 13px);
+				&.incoming 
+					align-self flex-start 
+					.body
+						background #FFFFFF
+				&.outgoing
+					align-self flex-end
+					.body 
+						background #B1E0DA
+				.body
+					size(auto, auto, 5px, 10px, 2px, 2px)
+					flex-container(row, flex-start, center)
+					flex-wrap wrap
+					display inline-flex
+					max-width 400px
+					border-radius 3px
+					color black
+					
+					&.photo
+						width min-content
+						background #ffffff
+						padding-top 10px
+						img
+							size(auto, auto)
+							max-height 300px
+							max-width 400px
+							//background #efefef 
+							background url('https://opengameart.org/sites/default/files/Transparency10.png')
+							background url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/White_grey_checkerboard.svg/305px-White_grey_checkerboard.svg.png')
+							background-attachment fixed
+					&.sticker
+						width min-content
+						background transparent
+						&:before, &:after
+							display none !important
+						img
+							size(auto, auto)
+							max-height 250px
+							max-width 250px
+					.capt
+						white-space pre-line
+						text-align left		
+					.meta
+						flex-grow 1
+						display flex
+						justify-content flex-end
+						align-self flex-end
+						position relative
+						bottom -2px
+						.date
+							display inline-block
+							opacity 0.8
+							margin 2px 5px 0 2ch
+							color #00b548
+							font-size 65%
+						.readstate
+							position relative
+							bottom -2px
+							left 2px
+							display inline-block
+							background-color #00b548 
+							mask-image: url('../img/msg_check_i.png') 
+							mask-repeat: no-repeat
+							mask-mode: alpha;
+							-webkit-mask-image: url('../img/msg_clock_i.png')
+							-webkit-mask-repeat: no-repeat;
+							-webkit-mask-mode: alpha;
+							size(12px,12px)
+							&.delivered
+								-webkit-mask-image: url('../img/msg_check_i.png')
+									
+							
+						
+
+	#chat-footer
+		flex-shrink 0
+		background-color bg_main
+		padding 5px 10px
+		align-items center
+		justify-content center
+		#chat-from, #chat-to
+			box-sizing border-box
+			border-radius 50%
+			width 64px
+			height 64px
+			margin 6px
+			flex-shrink 0
+			display flex
+			align-items center
+			justify-content center
+			flex-direction row
+			background-color rgba(0,0,0,0.1)
+			background-color accent
+			color white
+		#form
+			background darken(bg_menu, 20%)
+			outline none
+			caret-color white
+			color #ddd
+			border none
+			padding 10px 10px
+			min-width 50vw
+		#chat-form
+			.CodeMirror, .CodeMirror-scroll
+				height 64px
+				min-width 500px !important
+				min-height 64px !important 
+			.editor-toolbar
+				&:before, &:after
+					margin-bottom 1px !important
+					margin-top 0px !important
+			#buttons
+				display block
+					
+			

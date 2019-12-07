@@ -1,14 +1,15 @@
 <!-- templates/home.html-->
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Профиль{% endblock %}
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">logout</a></p>
+  <div id="username">{{ user.username }}</div>
+  <div id="chat"><a href="im.html">Войти в чат</a></div>
+  <div id="logout"><a href="{% url 'logout' %}">Выйти</a></div>
 {% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
+  <div id="unauthorized">Вы не авторизированы</div>
+  <div id="login"><a href="{% url 'login' %}">Войти</a></div>
 {% endif %}
 {% endblock %}
