@@ -6,7 +6,7 @@
 - nginx - реверс-прокси и сервер для статики, конфиги в `config/nginx.conf`
 - [centrifugo](https://centrifugal.github.io/centrifugo/) - сервер для рассылки сообщений в реальном времени. Конфиги в `config/centrifugo.json`
 - k732gram - сервер самого приложения на django-rest-framework
-- postgrrm git es - БД, данные в docker-разделе, как указано в `docker-compose.yml`
+- postgres - БД, данные в docker-разделе, как указано в `docker-compose.yml`
 
 ## Как запускать
 
