@@ -36,10 +36,10 @@ docker-compose run django python manage.py createsuperuser
 `npm i .`
 
 Сборка:
-`parcel build -d static views/im.pug`
+`npm run-script build`
 
 Сборка с автоматической пересборкой при обновлении файлов:
-`parcel watch -d static views/im.pug`
+`npm run-script watch`
 
 ### Todo
  - [ ] объединить вью для добавления чата и редактирования списка участников

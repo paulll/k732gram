@@ -17,7 +17,9 @@
     "cssnano": "^4.1.10"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build -d static views/im.pug && parcel build -d static assets/style/auth.styl",
+    "watch": "parcel watch -d static views/im.pug & parcel watch -d static assets/style/auth.styl"
   },
   "author": "paulll",
   "license": "MIT"
