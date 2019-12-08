@@ -19,7 +19,7 @@ class Message(models.Model):
 	date = models.DateTimeField(auto_now_add=True, blank=True)
 	author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, related_name="%(app_label)s_%(class)s_author")
 	chat = models.ForeignKey(Chat, on_delete=models.PROTECT)
-	read = models.ManyToManyField(User, related_name="%(app_label)s_%(class)s_readby", blank=True, null=True)
+	read = models.ManyToManyField(User, related_name="%(app_label)s_%(class)s_readby", blank=True)
 
 	def __str__(self):
 		if self.text:
