@@ -253,6 +253,7 @@ const createChat = async (self, centrifugo, chat) => {
 
 	const lastMessages = await call('/api/getChatHistory', {id: chat.id});
 	for (let msg of lastMessages.reverse()) {
+		chatList.insertBefore(listBinding.element, chatList.firstChild.nextSibling);
 		const msgBinding = histBinding.addMessage(msg.author.id != self.id, msg)
 		msgBinding.markDelivered();
 	}
@@ -261,8 +262,8 @@ const createChat = async (self, centrifugo, chat) => {
 		const event = msg.data.data;
 		const type = msg.data.type;
 		if (type == 'newMessage') {
+			chatList.insertBefore(listBinding.element, chatList.firstChild.nextSibling);
 			if (event.author.id == self.id) {
-				console.log(event, sentMessageByText);
 				const msgBinding = sentMessageByText.get(event.text);
 				if (msgBinding) {
 					msgBinding.markDelivered();
@@ -358,6 +359,7 @@ const createChat = async (self, centrifugo, chat) => {
 		bindForm(async (text) => {
 			const d = new Date;
 			const pad = (x) => ("0" + x).substr(-2); 
+			chatList.insertBefore(listBinding.element, chatList.firstChild.nextSibling)
 			const msgBinding = histBinding.addMessage(false, {
 				text, 
 				type: 'text', 
