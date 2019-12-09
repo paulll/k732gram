@@ -6,9 +6,22 @@ const chatMembersView = document.getElementById('chat-members-wrap');
 const chatMembersInput = document.getElementById('chat-member-input');
 const chatMembersList = document.getElementById('chat-member-list');
 
+export const focusChatMembersView = () => {
+	chatMembersInput.focus();
+};
+
+export const closeChatMembersView = () => {
+	chatMembersView.classList.remove('active');
+	chatMembersInput.blur();
+};
+
 export const editChatMembers = async (chat) => {
 	chatMembersView.classList.add('active');
 	chatMembersInput.focus();
+
+	// clear list
+	while (chatMembersList.firstChild)
+		chatMembersList.removeChild(chatMembersList.firstChild);
 
 	const chatMembers = new Set(chat.users.map(x=>x.id));
 	const allUsers = await call('/api/getUsers');
@@ -45,8 +58,9 @@ export const editChatMembers = async (chat) => {
 	displayUsers(allUsers);
 	chatMembersInput.onkeydown = async (event) => {
 		if (event.keyCode == 27 || event.keyCode == 13) {
-			chatMembersView.classList.remove('active');
-			chatMembersInput.blur();
+			if (chat.id < 0)
+				return false;
+			closeChatMembersView();
 		}
 		if (event.keyCode == 13) { // enter
 			const added = allUsers.filter(x=>chatMembers.has(x.id) && !chat.users.some(y => y.id == x.id));

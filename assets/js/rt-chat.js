@@ -1,4 +1,5 @@
 import {createChatEntity} from './chatEntity';
+import {editChatMembers,  closeChatMembersView, focusChatMembersView} from './chatMembers';
 import {connect} from './centrifugo';
 import {call} from './api';
 
@@ -24,6 +25,9 @@ const bindCreateChat = (self) => {
 	const btnCreateChat = document.getElementById('create-chat');
 	const chatNameWrap = document.getElementById('chat-name-input-wrap');
 	btnCreateChat.onclick = async () => {
+		const futureChat = {users: [self], id: -1};
+		editChatMembers(futureChat);
+
 		chatNameWrap.classList.add('active');
 		chatNameWrap.firstChild.focus();
 
@@ -31,10 +35,16 @@ const bindCreateChat = (self) => {
 			if (event.keyCode == 27 || event.keyCode == 13) {
 				chatNameWrap.classList.remove('active');
 				document.removeEventListener('keydown', listener);
+
+				if (event.keyCode == 27) 
+					closeChatMembersView();
 			}
+
 			if (event.keyCode == 13) {
+				focusChatMembersView();
 				const chat = await call('/api/createChat', {title: chatNameWrap.firstChild.value});
 				await createChatEntity(self, chat);
+				Object.assign(futureChat, chat);
 			}
 		}
 

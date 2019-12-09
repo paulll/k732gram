@@ -3,7 +3,7 @@ import {call} from './api';
 import {bindChatInputForm} from './bindChatInputForm';
 import {createChatHistoryElement} from './chatHistoryElement';
 import {createChatListElement} from './chatListElement';
-import {editChatMembers} from './chatMembers';
+import {editChatMembers, closeChatMembersView} from './chatMembers';
 
 export const createChatEntity = async (self, chat) => {
 	const chatList = document.getElementById('chat-list');
@@ -65,6 +65,8 @@ export const createChatEntity = async (self, chat) => {
 		histBinding.select();
 		histBinding.setStatus(chat.users.length);
 
+		// close members view on chat change
+		closeChatMembersView();
 		chatStatus.onclick = async () => {
 			editChatMembers(chat);
 		}
